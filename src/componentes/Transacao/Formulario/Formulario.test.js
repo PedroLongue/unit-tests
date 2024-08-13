@@ -28,3 +28,14 @@ describe('Should render a input', () => {
     expect(inputText).toHaveValue(50);
   });
 });
+
+test('Should call onSubmit event when click in new transation', () => {
+  const realizarTransacao = jest.fn();
+
+  render(<Formulario realizarTransacao={realizarTransacao} />);
+  const button = screen.getByRole('button');
+
+  userEvent.click(button);
+
+  expect(realizarTransacao).toHaveBeenCalledTimes(1);
+});
